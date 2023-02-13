@@ -1,0 +1,49 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+.form{
+    display: flex;
+    flex-direction: column;
+
+}
+.form > *{
+    
+    margin-top:5px;
+}
+.input{
+    width: 95%;
+}
+.form-bg{
+    background-color: lightslategray;
+    padding: 11px;
+    color: white;
+}
+.btn{
+    padding: 5px;
+}
+.books {
+   
+
+     margin: 8px;
+     border: 1px solid lightslategray;
+     padding: 15px 5px;
+}
+.book{
+    display: flex;
+    flex-direction: row;
+    border: 1px solid lightslategray;
+    margin: 5px ;
+}
+.name{
+    margin-right: auto;
+}
+.list{
+    color: lightslategray;
+   margin: 8px;
+}
+.otherface{
+    display: flex;
+    flex-direction: column;
+}
