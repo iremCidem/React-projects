@@ -1,6 +1,9 @@
 import React, { useState } from "react";
+import BookContext from "../context/books";
+import { useContext } from "react";
 
-export default function Form({ submit }) {
+export default function Form() {
+  const { submit } = useContext(BookContext);
   const [inputvalue, setInputvalue] = useState();
   function handleChange(e) {
     setInputvalue(e.target.value);

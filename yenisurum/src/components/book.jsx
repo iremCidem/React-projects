@@ -1,7 +1,10 @@
 import { useState } from "react";
 import bookimg from "../book.png";
+import { useContext } from "react";
+import BookContext from "../context/books";
 
-const Book = ({ book, deleteItem, change }) => {
+const Book = ({ book }) => {
+  const { deleteItem, changeTitle } = useContext(BookContext);
   const [state, setState] = useState(true);
   const [newTitle, setNewTitle] = useState();
   function deleteClick() {
@@ -13,15 +16,15 @@ const Book = ({ book, deleteItem, change }) => {
   function save(e) {
     e.preventDefault();
 
-    change(newTitle, book.id);
+    changeTitle(newTitle, book.id);
     düzenle();
   }
-  function changeTitle(e) {
+  function changeTit(e) {
     setNewTitle(e.target.value);
   }
 
   return (
-    <div className="book">
+    <div className="book" key={book.id}>
       {state && (
         <div>
           <img src={bookimg} alt="book" width="80px" />
@@ -40,7 +43,7 @@ const Book = ({ book, deleteItem, change }) => {
         <div>
           <form onSubmit={save}>
             <label>Title</label>
-            <input type="text" value={newTitle} onChange={changeTitle} />
+            <input type="text" value={newTitle} onChange={changeTit} />
             <button className="buton">Save</button>
           </form>
           <div>

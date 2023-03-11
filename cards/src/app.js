@@ -1,30 +1,41 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Form from "./components/form";
 import "../src/app.css";
 import { useState } from "react";
 import Booklist from "./components/booklist";
+import axios from "axios";
 
 export default function App() {
   const [books, setBooks] = useState([]);
-  function deleteItem(bookId) {
-    const deleted = books.filter((book) => {
-      return book.id !== bookId;
-    });
-    setBooks(deleted);
+  useEffect(() => {
+    getDatas();
+  }, []);
+  async function getDatas() {
+    const datas = await axios.get("http://localhost:8000/books");
+
+    setBooks(datas.data);
   }
-  function submit(value) {
-    const id = Math.floor(Math.random() * 9999);
-    const updated = [...books, { id: id, name: value }];
-    setBooks(updated);
+
+  async function deleteItem(bookId) {
+    try {
+      await axios.delete(`http://localhost:8000/books/${bookId}`);
+      getDatas();
+    } catch (error) {
+      console.log("zarrr", error);
+    }
   }
-  function changeTitle(newtitle, id) {
-    const updated = books.map((book) => {
-      if (book.id === id) {
-        return { id: id, name: newtitle };
-      }
-      return book;
+  async function submit(value) {
+    const newName = await axios.post("http://localhost:8000/books", {
+      name: value,
     });
-    setBooks(updated);
+
+    getDatas();
+  }
+  async function changeTitle(newtitle, id) {
+    const changed = await axios.put(`http://localhost:8000/books/${id}`, {
+      name: newtitle,
+    });
+    getDatas();
   }
 
   return (
@@ -39,3 +50,6 @@ export default function App() {
     </div>
   );
 }
+//json server kullanarak verilerimizi bir apiden çekeceğiz böylece kalıcı hale getireceğiz.
+//axios bir kütüphane ama arka planda fetch yapısını kullanıyor, önemki projelerde axios kullanacağız.
+//useEffect hooku bir react fonksiyonu.ilk argümanı bir arrow fonksiyonu, ikinci argümanı bir array ya da hiçbirşey.

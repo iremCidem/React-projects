@@ -1,0 +1,29 @@
+const data = [1, 2, 8, 0, 3, 4, 12];
+data.sort((a, b) => {
+  //sort işleminin tek başına işe yaramamasının sebebi bu işlem sırasında sayıları stringe çevirip kontrol etmesidir.
+  return a - b;
+});
+const datab = ["t", "A", "S", "p", "v"]; //sort işlemi tek başına büyük ve küçük harfleri bir arada doğru sıralayamaz.
+datab.sort((a, b) => {
+  return a.localeCompare(b);
+});
+//OBJECT SIRALAMA
+const obj = [
+  { name: "carrot", cost: "10" },
+  { name: "tomato", cost: "5" },
+  { name: "onion", cost: "15" },
+];
+function getValue(data) {
+  return data.name;
+}
+obj.sort((a, b) => {
+  A = getValue(a);
+  B = getValue(b);
+
+  if (typeof A === "string") {
+    console.log("kontrol");
+    return A.localeCompare(B);
+  } else {
+    return A - B;
+  }
+});
