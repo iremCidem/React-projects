@@ -1,0 +1,43 @@
+{
+  "users": [
+    {
+      "name": "Dr. Elena Wuckert",
+      "id": 6
+    },
+    {
+      "name": "Derek Abbott",
+      "id": 7
+    },
+    {
+      "name": "Lori Hermann",
+      "id": 10
+    },
+    {
+      "name": "Edna Hansen",
+      "id": 11
+    }
+  ],
+  "photos": [],
+  "albums": [
+    {
+      "userId": 10,
+      "title": "Oriental Concrete Car",
+      "id": 8
+    },
+    {
+      "userId": 7,
+      "title": "Intelligent Plastic Salad",
+      "id": 12
+    },
+    {
+      "userId": 10,
+      "title": "Handmade Frozen Tuna",
+      "id": 16
+    },
+    {
+      "userId": 6,
+      "title": "Refined Concrete Bacon",
+      "id": 18
+    }
+  ]
+}
